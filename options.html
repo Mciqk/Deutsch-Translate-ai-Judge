@@ -34,6 +34,12 @@
           <small>可用占位符：{{chinese}} {{english}} {{userGerman}} {{referenceGerman}}</small>
         </label>
 
+        <label class="checkbox-field">
+          <input id="debugLoggingEnabled" type="checkbox" />
+          <span>启用调试日志</span>
+          <small>开启后会在页面 DevTools 和 Service Worker Console 输出耗时打点日志。</small>
+        </label>
+
         <div class="actions">
           <button id="saveButton" class="primary">保存配置</button>
           <button id="resetPromptButton" type="button">恢复默认提示词</button>

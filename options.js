@@ -114,11 +114,14 @@ summary 要求：
   ]
 }`;
 
+const DEBUG_LOGGING_KEY = "debugLoggingEnabled";
+
 const elements = {
   apiBaseUrl: document.getElementById("apiBaseUrl"),
   apiKey: document.getElementById("apiKey"),
   model: document.getElementById("model"),
   promptTemplate: document.getElementById("promptTemplate"),
+  debugLoggingEnabled: document.getElementById("debugLoggingEnabled"),
   saveButton: document.getElementById("saveButton"),
   resetPromptButton: document.getElementById("resetPromptButton"),
   status: document.getElementById("status")
@@ -140,12 +143,14 @@ async function loadSettings() {
     "apiBaseUrl",
     "apiKey",
     "model",
-    "promptTemplate"
+    "promptTemplate",
+    DEBUG_LOGGING_KEY
   ]);
 
   elements.apiBaseUrl.value = values.apiBaseUrl || "";
   elements.apiKey.value = values.apiKey || "";
   elements.model.value = values.model || "";
+  elements.debugLoggingEnabled.checked = Boolean(values[DEBUG_LOGGING_KEY]);
   const savedPromptTemplate = (values.promptTemplate || "").trim();
   elements.promptTemplate.value =
     !savedPromptTemplate ||
@@ -160,6 +165,7 @@ async function saveSettings() {
   const apiKey = elements.apiKey.value.trim();
   const model = elements.model.value.trim();
   const promptTemplate = elements.promptTemplate.value.trim() || DEFAULT_PROMPT_TEMPLATE;
+  const debugLoggingEnabled = elements.debugLoggingEnabled.checked;
 
   if (!apiBaseUrl || !apiKey || !model) {
     setStatus("API Base URL、API Key 和模型名都必须填写。", true);
@@ -188,7 +194,8 @@ async function saveSettings() {
     apiBaseUrl,
     apiKey,
     model,
-    promptTemplate
+    promptTemplate,
+    [DEBUG_LOGGING_KEY]: debugLoggingEnabled
   });
 
   setStatus(`配置已保存。${permissionMessage}`, false, true);

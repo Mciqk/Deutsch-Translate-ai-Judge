@@ -53,6 +53,29 @@ h1 {
   margin-bottom: 18px;
 }
 
+.checkbox-field {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  gap: 8px 12px;
+  align-items: start;
+  margin: 6px 0 18px;
+}
+
+.checkbox-field input {
+  width: 18px;
+  height: 18px;
+  margin-top: 3px;
+}
+
+.checkbox-field span {
+  font-weight: 700;
+}
+
+.checkbox-field small {
+  grid-column: 2;
+  color: var(--muted);
+}
+
 .field span {
   display: block;
   margin-bottom: 8px;
