@@ -7,7 +7,11 @@ const SELECTORS = {
 
 const BUTTON_CLASS = "sl-ai-judge-btn";
 const CARD_CLASS = "sl-ai-judge-card";
+const DEBUG_LOGGING_KEY = "debugLoggingEnabled";
 
+let debugLoggingEnabled = false;
+
+configureDebugLogging();
 init();
 
 function init() {
@@ -21,6 +25,27 @@ function init() {
     childList: true,
     subtree: true
   });
+}
+
+function configureDebugLogging() {
+  void loadDebugLoggingPreference();
+
+  chrome.storage.onChanged.addListener((changes, areaName) => {
+    if (areaName !== "sync" || !(DEBUG_LOGGING_KEY in changes)) {
+      return;
+    }
+
+    debugLoggingEnabled = Boolean(changes[DEBUG_LOGGING_KEY].newValue);
+  });
+}
+
+async function loadDebugLoggingPreference() {
+  try {
+    const values = await chrome.storage.sync.get(DEBUG_LOGGING_KEY);
+    debugLoggingEnabled = Boolean(values[DEBUG_LOGGING_KEY]);
+  } catch (_error) {
+    debugLoggingEnabled = false;
+  }
 }
 
 function mountJudgeButton() {
@@ -514,6 +539,10 @@ function createJudgeTraceId() {
 }
 
 function logContentTiming(traceId, label, startTime, details) {
+  if (!debugLoggingEnabled) {
+    return;
+  }
+
   const duration = typeof startTime === "number" ? `${(performance.now() - startTime).toFixed(1)}ms` : "";
   const prefix = `[AI Judge][content][${traceId}] ${label}`;
 

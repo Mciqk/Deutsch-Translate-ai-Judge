@@ -114,11 +114,38 @@ summary 要求：
   ]
 }`;
 
+const DEBUG_LOGGING_KEY = "debugLoggingEnabled";
+
+let debugLoggingEnabled = false;
+
+configureDebugLogging();
+
 chrome.runtime.onInstalled.addListener((details) => {
   if (details.reason === "install") {
     chrome.runtime.openOptionsPage();
   }
 });
+
+function configureDebugLogging() {
+  void loadDebugLoggingPreference();
+
+  chrome.storage.onChanged.addListener((changes, areaName) => {
+    if (areaName !== "sync" || !(DEBUG_LOGGING_KEY in changes)) {
+      return;
+    }
+
+    debugLoggingEnabled = Boolean(changes[DEBUG_LOGGING_KEY].newValue);
+  });
+}
+
+async function loadDebugLoggingPreference() {
+  try {
+    const values = await chrome.storage.sync.get(DEBUG_LOGGING_KEY);
+    debugLoggingEnabled = Boolean(values[DEBUG_LOGGING_KEY]);
+  } catch (_error) {
+    debugLoggingEnabled = false;
+  }
+}
 
 chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   const traceId = getTraceId(message);
@@ -493,6 +520,10 @@ function getTraceId(message) {
 }
 
 function logBackgroundTiming(traceId, label, startTime, details) {
+  if (!debugLoggingEnabled) {
+    return;
+  }
+
   const duration = typeof startTime === "number" ? `${(performance.now() - startTime).toFixed(1)}ms` : "";
   const prefix = `[AI Judge][background][${traceId}] ${label}`;
 
