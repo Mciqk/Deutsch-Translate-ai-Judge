@@ -49,7 +49,6 @@
 
 - `API Base URL`、`API Key`、模型名和提示词模板保存在浏览器的 `chrome.storage.sync`
 - 调试日志默认关闭，需要时可在设置页开启
-- 这些配置不在仓库中，不会随源码上传到 GitHub
 
 ## 使用方法
 
