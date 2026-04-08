@@ -1,0 +1,159 @@
+.sl-ai-judge-btn {
+  margin-left: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid rgba(201, 212, 255, 0.38);
+  background:
+    radial-gradient(140% 115% at 50% -10%, rgba(182, 178, 251, 0.92) 0%, rgba(182, 178, 251, 0) 42%),
+    radial-gradient(90% 90% at 18% 16%, rgba(237, 240, 255, 0.28) 0%, rgba(237, 240, 255, 0) 45%),
+    radial-gradient(100% 92% at 78% 84%, rgba(123, 126, 255, 0.24) 0%, rgba(123, 126, 255, 0) 50%),
+    linear-gradient(180deg, #b6b2fb 0%, #9ca2fb 18%, #818ffb 46%, #6676fb 72%, #3d3cfa 100%);
+  color: #ffffff;
+  cursor: pointer;
+  text-shadow: 0 1px 0 rgba(34, 40, 110, 0.18);
+  box-shadow:
+    0 10px 22px rgba(73, 82, 255, 0.26),
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+    0 1px 0 rgba(255, 255, 255, 0.18) inset;
+  transition:
+    transform 140ms ease,
+    box-shadow 180ms ease,
+    filter 180ms ease;
+}
+
+.sl-ai-judge-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(95% 80% at 50% 4%, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0) 52%),
+    radial-gradient(62% 78% at 18% 26%, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 58%),
+    radial-gradient(60% 72% at 84% 86%, rgba(161, 174, 255, 0.14) 0%, rgba(161, 174, 255, 0) 56%);
+  mix-blend-mode: screen;
+  opacity: 0.9;
+}
+
+.sl-ai-judge-btn:hover {
+  filter: saturate(1.04) brightness(1.03);
+  box-shadow:
+    0 12px 26px rgba(73, 82, 255, 0.3),
+    0 0 22px rgba(102, 118, 251, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset,
+    0 1px 0 rgba(255, 255, 255, 0.2) inset;
+}
+
+.sl-ai-judge-btn:focus,
+.sl-ai-judge-btn:active {
+  color: #ffffff;
+}
+
+.sl-ai-judge-btn:focus {
+  outline: none;
+  box-shadow:
+    0 0 0 0.2rem rgba(102, 118, 251, 0.22),
+    0 10px 24px rgba(73, 82, 255, 0.28),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+}
+
+.sl-ai-judge-btn:active {
+  transform: translateY(1px);
+  box-shadow:
+    0 7px 16px rgba(73, 82, 255, 0.24),
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+}
+
+.sl-ai-judge-card {
+  margin-top: 14px;
+  margin-bottom: 16px;
+  padding: 16px;
+  border: 1px solid #c9d6eb;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #f8fbff, #f3f7ff);
+  color: #16324f;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.sl-ai-judge-card.is-loading {
+  border-color: #7eb6ff;
+}
+
+.sl-ai-judge-card.is-error {
+  border-color: #ef9a9a;
+  background: linear-gradient(180deg, #fff8f8, #fff0f0);
+  color: #7e1c1c;
+}
+
+.sl-ai-judge-card__title {
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.sl-ai-judge-card__meta,
+.sl-ai-judge-summary {
+  margin: 0 0 10px;
+}
+
+.sl-ai-judge-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.sl-ai-judge-grid--compact {
+  grid-template-columns: minmax(160px, 220px);
+}
+
+.sl-ai-judge-grid div {
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(23, 120, 242, 0.08);
+}
+
+.sl-ai-judge-grid span {
+  display: block;
+  margin-bottom: 4px;
+  color: #4a647f;
+  font-size: 12px;
+}
+
+.sl-ai-judge-section {
+  margin-top: 14px;
+}
+
+.sl-ai-judge-section__title {
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
+.sl-ai-judge-context {
+  margin-bottom: 4px;
+}
+
+.sl-ai-judge-list {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.sl-ai-judge-list li {
+  margin-bottom: 8px;
+}
+
+.sl-ai-judge-list__head {
+  font-weight: 700;
+}
+
+.sl-ai-judge-list__body,
+.sl-ai-judge-empty {
+  color: #4a647f;
+}

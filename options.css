@@ -1,0 +1,122 @@
+:root {
+  color-scheme: light;
+  --bg: #f3f7fb;
+  --panel: #ffffff;
+  --text: #17324d;
+  --muted: #667b91;
+  --accent: #1c78f4;
+  --accent-deep: #0d5ed6;
+  --border: #dbe6f1;
+  --ok: #127a43;
+  --error: #a12e2e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at top right, rgba(28, 120, 244, 0.1), transparent 35%),
+    linear-gradient(180deg, #eef5fc, var(--bg));
+  color: var(--text);
+  font: 15px/1.5 "SF Pro Display", "PingFang SC", "Helvetica Neue", sans-serif;
+}
+
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.panel {
+  padding: 28px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 18px 60px rgba(32, 76, 133, 0.08);
+}
+
+h1 {
+  margin: 0 0 10px;
+  font-size: 28px;
+}
+
+.lead {
+  margin: 0 0 24px;
+  color: var(--muted);
+}
+
+.field {
+  display: block;
+  margin-bottom: 18px;
+}
+
+.field span {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.field small {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+}
+
+input,
+textarea,
+button {
+  font: inherit;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fbfdff;
+  color: var(--text);
+}
+
+textarea {
+  resize: vertical;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+button {
+  padding: 11px 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #ffffff;
+  color: var(--text);
+  cursor: pointer;
+}
+
+button.primary {
+  border-color: transparent;
+  background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+  color: #ffffff;
+}
+
+.status {
+  min-height: 24px;
+  margin: 14px 0 0;
+  color: var(--muted);
+}
+
+.status.is-ok {
+  color: var(--ok);
+}
+
+.status.is-error {
+  color: var(--error);
+}

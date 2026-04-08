@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sharplingo AI Judge 设置</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="panel">
+        <h1>Sharplingo AI Judge</h1>
+        <p class="lead">填写你自己的 OpenAI 兼容接口、密钥和模型名。点击 AI 评判时，当前题目的原句与作答会发送到你配置的服务。</p>
+
+        <label class="field">
+          <span>API Base URL</span>
+          <input id="apiBaseUrl" type="url" placeholder="例如 https://api.openai.com/v1" />
+          <small>保存时会申请当前域名的网络权限。</small>
+        </label>
+
+        <label class="field">
+          <span>API Key</span>
+          <input id="apiKey" type="password" placeholder="sk-..." />
+        </label>
+
+        <label class="field">
+          <span>模型名</span>
+          <input id="model" type="text" placeholder="例如 gpt-4.1-mini 或自定义模型 ID" />
+        </label>
+
+        <label class="field">
+          <span>提示词模板</span>
+          <textarea id="promptTemplate" rows="14"></textarea>
+          <small>可用占位符：{{chinese}} {{english}} {{userGerman}} {{referenceGerman}}</small>
+        </label>
+
+        <div class="actions">
+          <button id="saveButton" class="primary">保存配置</button>
+          <button id="resetPromptButton" type="button">恢复默认提示词</button>
+        </div>
+
+        <p id="status" class="status" aria-live="polite"></p>
+      </section>
+    </main>
+
+    <script src="options.js"></script>
+  </body>
+  </html>

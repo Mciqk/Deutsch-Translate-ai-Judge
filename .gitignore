@@ -1,0 +1,13 @@
+.DS_Store
+Thumbs.db
+
+# Local archives and docs not meant for the repository
+*.pdf
+*.zip
+*.crx
+
+# Editor and temp files
+.idea/
+.vscode/
+*.swp
+*.swo

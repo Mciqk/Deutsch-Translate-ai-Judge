@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Sharplingo AI Judge",
+  "version": "0.1.0",
+  "description": "为 Sharplingo 翻译练习注入 AI 评判按钮，支持自定义 OpenAI 兼容 API 与模型。",
+  "permissions": ["storage", "permissions"],
+  "optional_host_permissions": ["http://*/*", "https://*/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.sharplingo.cn/courses/*",
+        "https://sharplingo.cn/courses/*"
+      ],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "Sharplingo AI Judge",
+    "default_popup": "popup.html"
+  },
+  "options_page": "options.html"
+}
